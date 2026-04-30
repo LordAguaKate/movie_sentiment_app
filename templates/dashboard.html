@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Reseñas</title>
+</head>
+<body>
+    <h1>📊 Historial de Reseñas Analizadas</h1>
+    
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Reseña</th>
+                <th>Sentimiento</th>
+                <th>Fecha de Registro</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in reviews %}
+            <tr>
+                <td>{{ row.id }}</td>
+                <td>{{ row.review_text }}</td>
+                <td>
+                    {% if row.sentiment == 'positive' %}
+                        🟢 Positivo
+                    {% else %}
+                        🔴 Negativo
+                    {% endif %}
+                </td>
+                <td>{{ row.created_at }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4">Aún no hay reseñas registradas en la base de datos.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <br>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>

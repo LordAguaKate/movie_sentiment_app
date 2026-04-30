@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Analizador de Reseñas de Películas</title>
+</head>
+<body>
+    <h1>🎬 Escribe tu reseña</h1>
+    <p>Cuéntanos qué te pareció la película y nuestra IA determinará si tu crítica es positiva o negativa.</p>
+    
+    <form action="/predict" method="POST">
+        <textarea name="review" rows="5" cols="50" placeholder="Escribe tu reseña en inglés aquí..." required></textarea>
+        <br><br>
+        <button type="submit">Analizar Sentimiento</button>
+    </form>
+    
+    <br>
+    <a href="/dashboard">Ver todas las reseñas guardadas</a>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado del Análisis</title>
+</head>
+<body>
+    <h1>¡Gracias por tu reseña! 🍿</h1>
+    
+    <h3>Tu texto:</h3>
+    <blockquote>{{ review }}</blockquote>
+    
+    <h3>Predicción del Modelo:</h3>
+    <p>
+        <strong>
+            {% if prediction == 'positive' %}
+                🟢 Positivo
+            {% else %}
+                🔴 Negativo
+            {% endif %}
+        </strong>
+    </p>
+    
+    <br>
+    <a href="/">Analizar otra reseña</a> | <a href="/dashboard">Ir al Dashboard</a>
+</body>
+</html>
