@@ -1,11 +1,9 @@
 import sqlite3
 
 def init_db():
-    # Conecta o crea el archivo SQLite
     conn = sqlite3.connect('reviews.sqlite')
     cursor = conn.cursor()
     
-    # Crear la tabla si no existe
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS reviews (
             id INTEGER PRIMARY KEY AUTOINCREMENT,

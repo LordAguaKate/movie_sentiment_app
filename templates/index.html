@@ -2,19 +2,23 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Analizador de Reseñas de Películas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador IA | Sentimiento de Películas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>🎬 Escribe tu reseña</h1>
-    <p>Cuéntanos qué te pareció la película y nuestra IA determinará si tu crítica es positiva o negativa.</p>
-    
-    <form action="/predict" method="POST">
-        <textarea name="review" rows="5" cols="50" placeholder="Escribe tu reseña en inglés aquí..." required></textarea>
-        <br><br>
-        <button type="submit">Analizar Sentimiento</button>
-    </form>
-    
-    <br>
-    <a href="/dashboard">Ver todas las reseñas guardadas</a>
+    <div class="container">
+        <h1>Analizador de Reseñas</h1>
+        <p class="subtitle">Nuestra IA procesará tu texto y determinará la polaridad de tu crítica utilizando Machine Learning.</p>
+        
+        <form action="/predict" method="POST">
+            <textarea name="review" rows="5" placeholder="Escribe tu reseña en inglés aquí (ej. 'I absolutely loved the cinematography...')" required></textarea>
+            <button type="submit">Analizar Sentimiento</button>
+        </form>
+        
+        <div class="nav-links">
+            <a href="/dashboard">Ver historial de análisis &rarr;</a>
+        </div>
+    </div>
 </body>
 </html>

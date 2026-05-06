@@ -2,43 +2,49 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard de Reseñas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Analizador IA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>📊 Historial de Reseñas Analizadas</h1>
-    
-    <table border="1" cellpadding="10" cellspacing="0">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Reseña</th>
-                <th>Sentimiento</th>
-                <th>Fecha de Registro</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in reviews %}
-            <tr>
-                <td>{{ row.id }}</td>
-                <td>{{ row.review_text }}</td>
-                <td>
-                    {% if row.sentiment == 'positive' %}
-                        🟢 Positivo
-                    {% else %}
-                        🔴 Negativo
-                    {% endif %}
-                </td>
-                <td>{{ row.created_at }}</td>
-            </tr>
-            {% else %}
-            <tr>
-                <td colspan="4">Aún no hay reseñas registradas en la base de datos.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
-    <br>
-    <a href="/">Volver al inicio</a>
+    <div class="container dashboard-container">
+        <h1>Historial de Predicciones</h1>
+        <p class="subtitle">Registro en tiempo real de inferencias almacenadas en SQLite.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Reseña Evaluada</th>
+                    <th>Sentimiento</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in reviews %}
+                <tr>
+                    <td style="color: var(--text-muted);">#{{ row.id }}</td>
+                    <td>{{ row.review_text }}</td>
+                    <td>
+                        {% if row.sentiment == 'positive' %}
+                            <span style="color: var(--success); font-weight: 600;">Positivo</span>
+                        {% else %}
+                            <span style="color: var(--danger); font-weight: 600;">Negativo</span>
+                        {% endif %}
+                    </td>
+                    <td style="font-size: 0.85rem; color: var(--text-muted);">{{ row.created_at }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center; color: var(--text-muted);">Aún no hay reseñas registradas en la base de datos.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+        <div class="nav-links">
+            <a href="/">&larr; Volver al panel de predicción</a>
+        </div>
+    </div>
 </body>
 </html>
